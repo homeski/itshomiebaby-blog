@@ -1,33 +1,38 @@
-<div class="container">
-	<h1>Blog</h1>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-8 col-md-9">
-			<h4 class="text-weight-normal">Showing {{ data.posts.results.length}} post.</h4>
-			<div class="blog">
-				{{# each data.posts.results}}
-				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-					<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
-					<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
-							{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</p>
-					{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}}
-					<p>{{{content.brief}}}</p>
-					{{#if content.extended}}<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>{{/if}}
+		<div id="main-body" class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12 content">
+							<img class="img-responsive" src="/images/index-main-article.jpg">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 content">
+							<a href="#"><h1 class="loud">Welcome to All Things Indie</h1></a>
+							<h3 class="loud sub">MichikoKatsu.com is designed to be a one-stop-shop for everything you need to start, improve, publish and market your self-published fiction book.</h3>
+							<h6>by <a href="#">Homero</a></h6>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<a href="#"><h2 class="loud">Prime Inner Conflict (aka Conflicting Wants)</h2></a>
+							<h6>by <a href="#">Homero</a></h6>
+						</div>
+						<div class="col-md-6">
+							<a href="#"><h2 class="loud">How to flesh out a character</h2></a>
+							<h6>by <a href="#">Homero</a></h6>
+						</div>
+					</div>
 				</div>
-				{{/each}}
-			</div>
-		</div>
-		<div class="col-sm-4 col-md-3">
-			<h2>Categories</h2>
-			<div style="margin-top: 70px;" class="list-group">
-				<a href="/blog" class="active list-group-item">All Categories</a>
-				{{# each data.categories }}
-				<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
-				{{/each}}
+				<div class="col-md-4">
+					<div class="row" style="border-top: 3px solid #333; padding-top: 1em;">
+						<div class="col-md-12">
+						   {{# each data.posts.results}}
+                        <a href="{{postUrl slug}}"><h3 class="loud">{{title}}</h3></a>{{#if author.name.first}}<h6>by <a href="#">{{author.name.first}}</a></h6>{{/if}}
+                     {{/each}}
+                  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	{{>pagination}}
-</div>
