@@ -1,16 +1,110 @@
-#header {
-	margin-top: 30px;
+body {
+	color: #777;
+}
+
+#main-body {
+
+}
+
+#site-wrapper {
+	position: relative;
+	background-color: #fff;
+}
+
+.content {
+	text-align: center;
 }
 
 #footer {
-	margin-top: 30px;
-	border-top: 1px solid #eeeeee;
-	padding-top: 30px;
-	color: #777777;
+	background-color: #eee;
+	//border-top: 3px solid #333;
+	height: 6em;
+	margin-top: 2em;
+	padding-top: 1em;
+	position: absolute;
+	z-index: -20;
+	clear: both;
+	width: 100%;
+	text-align: center;
 }
 
-.gallery-image img{
-    display: block;
-    max-width: 100%;
-    height: auto;
+#footer-content {
+	background-color: #333;
+	bottom: 0px;
+	font-size: 2em;
+	left: 0px;
+	margin: 0 auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	position: fixed;
+	right: 0px;
+	text-align: center;
+	width: 100%;
+	z-index: -15;
+	color: #eee;
+}
+
+.block h3 {
+	font-family: 'Lora', serif;
+}
+
+.loud {
+	font-family: 'Lora', serif;
+	font-weight: 700;
+	padding: .3em 0;
+}
+
+.loud.sub {
+	font-family: 'Lora', serif;
+	font-weight: 400;
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
+a .loud {
+	color: #555;
+}
+
+a:hover .loud {
+	color: #333;
+}
+
+/* overwrite bootstrap colors */
+.navbar-brand {
+	font-family: 'EB Garamond', serif;
+	font-size: 1.8em;
+}
+
+.navbar-default {
+	background-color: #fff;
+	border-color: #fff;
+	margin-top: 1em;
+}
+
+.container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Lora', serif;
+}
+
+input, button {
+	border-radius: 0 !important;
+}
+
+
+
+.container-fluid>.navbar-collapse {
+  /* margin-right: 0; */
+  margin-right: -15px !important;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1.2em;
 }
