@@ -8,26 +8,26 @@
 					</div>
 					<div class="row">
 						<div class="col-md-10 col-md-offset-1 content">
-							<a href="#"><h1 class="loud">Welcome to All Things Indie</h1></a>
+							<a href="#"><h1 class="loud">{{ data.headlines.0.title }}</h1></a>
 							<h3 class="loud sub">MichikoKatsu.com is designed to be a one-stop-shop for everything you need to start, improve, publish and market your self-published fiction book.</h3>
-							<h6>by <a href="#">Homero</a></h6>
+							<h6>by <a href="#">{{ data.headlines.0.author.name.first }}</a></h6>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<a href="#"><h2 class="loud">Prime Inner Conflict (aka Conflicting Wants)</h2></a>
-							<h6>by <a href="#">Homero</a></h6>
+							<a href="#"><h2 class="loud">{{ data.headlines.1.title }}</h2></a>
+							<h6>by <a href="#">{{ data.headlines.1.author.name.first }}</a></h6>
 						</div>
 						<div class="col-md-6">
-							<a href="#"><h2 class="loud">How to flesh out a character</h2></a>
-							<h6>by <a href="#">Homero</a></h6>
+							<a href="#"><h2 class="loud">{{ data.headlines.2.title }}</h2></a>
+							<h6>by <a href="#">{{ data.headlines.2.author.name.first }}</a></h6>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="row" style="border-top: 3px solid #333; padding-top: 1em;">
 						<div class="col-md-12">
-						   {{# each data.posts.results}}
+						   {{# each data.posts }}
                         <a href="{{postUrl slug}}"><h3 class="loud">{{title}}</h3></a>{{#if author.name.first}}<h6>by <a href="#">{{author.name.first}}</a></h6>{{/if}}
                      {{/each}}
                   </div>
