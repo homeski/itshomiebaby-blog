@@ -44,36 +44,41 @@ exports = module.exports = function (req, res) {
 	// Load the current category filter
 	view.on('init', function (next) {
 
-		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function (err, result) {
-				locals.data.category = result;
-				next(err);
-			});
-		} else {
-			next();
-		}
+		keystone.list('PostCategory').model.findOne({ key: 'headline' }).exec(function (err, result) {
+			locals.data.category = result;
+			next(err);
+		});
 	});
 
 	// Load the posts
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').paginate({
-			page: req.query.page || 1,
-			perPage: 10,
-			maxPages: 10,
-			filters: {
-				state: 'published',
-			},
-		})
+		var q = keystone.list('Post').model.find()
+			.where('state', 'published')
 			.sort('-publishedDate')
-			.populate('author categories');
+			.populate('author');
 
-		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
-		}
+		var r = keystone.list('Post').model.find()
+			.where('state', 'published')
+			.sort('-publishedDate')
+			.populate('author');
 
-		q.exec(function (err, results) {
-			locals.data.posts = results;
+		q.where('categories').in([locals.data.category]);
+
+		async.parallel([
+			function(callback) {
+				q.exec(function (err, results) {
+					locals.data.headlines = results;
+					callback(null, results);
+				});
+			},
+			function(callback) {
+				r.exec(function (err , results) {
+					locals.data.posts = results;
+					callback(null, results);
+				});
+			}
+		], function(err, results){ 
 			next(err);
 		});
 	});
