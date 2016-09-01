@@ -32,3 +32,5 @@ node_modules
 
 # Ignore VIM
 *.swp
+
+sftp-config.json
