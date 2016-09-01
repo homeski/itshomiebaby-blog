@@ -53,28 +53,23 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').model.find()
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author');
-
 		var r = keystone.list('Post').model.find()
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author');
 
-		q.where('categories').in([locals.data.category]);
-
 		async.parallel([
 			function(callback) {
-				q.exec(function (err, results) {
-					locals.data.headlines = results;
+				r.exec(function (err , results) {
+					locals.data.posts = results;
 					callback(null, results);
 				});
 			},
 			function(callback) {
-				r.exec(function (err , results) {
-					locals.data.posts = results;
+				r.where('categories').in([locals.data.category]);
+				
+				r.exec(function (err, results) {
+					locals.data.headlines = results;
 					callback(null, results);
 				});
 			}
