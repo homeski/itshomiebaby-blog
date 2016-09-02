@@ -1,25 +1,23 @@
-		<div id="main-body" class="container">
-			<div id="post-body" class="row">
-				<div class="col-md-6">
-					<header>
-						<h1>{{data.post.title}}</h1>
-						<h5>
-							{{{categoryList data.post.categories prefix="Posted in "}}}
-							{{#if author.name.first}}by {{author.name.first}}{{/if}}
-						</h5>
-					</header>
-					<div class="post">
-						{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
-						{{{data.post.content.extended}}}
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="post">
-						{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
-						{{{data.post.content.extended}}}
-					</div>
-				</div>
-
+<div id="main-body" class="container">
+	<div id="post-body" class="row">
+		<div class="col-md-6">
+			<header>
+				<h1>{{data.post.title}}</h1>
+				<h5>
+					{{{categoryList data.post.categories prefix="Posted in "}}}
+					{{#if author.name.first}}by {{author.name.first}}{{/if}}
+				</h5>
+			</header>
+			<div class="post">
+				{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
+				{{{data.post.content.extended}}}
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="post">
+				{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
+				{{{data.post.content.extended_extra}}}
 			</div>
 		</div>
 	</div>
+</div>
