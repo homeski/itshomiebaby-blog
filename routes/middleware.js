@@ -8,6 +8,7 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
+var marked = require('marked');
 
 
 /**
@@ -41,6 +42,18 @@ exports.flashMessages = function (req, res, next) {
 	res.locals.messages = _.some(flashMessages, function (msgs) { return msgs.length; }) ? flashMessages : false;
 	next();
 };
+
+// Convert content_extended markdown to HTML before saving
+exports.markdownToHtml = function (req, res, next) {
+	// On post update
+	if (req.body.action === 'updateItem' && req.body['content.extended']) {
+		html = marked(req.body['content.extended']);
+		req.body['html'] = html;
+	}
+
+
+	next();
+}
 
 
 /**

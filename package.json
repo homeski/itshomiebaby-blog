@@ -12,7 +12,8 @@
     "handlebars": "^4.0.5",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7", 
-    "dotenv": "^2.0.0"
+    "dotenv": "^2.0.0",
+    "marked": "*"
   },
   "devDependencies": {
     "eslint": "^2.12.0",
