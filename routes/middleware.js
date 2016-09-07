@@ -51,7 +51,6 @@ exports.markdownToHtml = function (req, res, next) {
 		req.body['html'] = html;
 	}
 
-
 	next();
 }
 

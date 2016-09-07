@@ -20,7 +20,7 @@ Post.add({
 	content: {
 		brief: { type: Types.Html, wysiwyg: false, height: 150 },
 		extended: { type: Types.Html, wysiwyg: false, height: 400 },
-		extended_extra: { type: Types.Html, wysiwyg: false, height: 400 },
+		extended_extra: { type: Types.Html, wysiwyg: false, height: 400 }
 	},
 	html: { type: String, required: false, hidden: true },
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
