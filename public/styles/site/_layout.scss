@@ -21,34 +21,6 @@
 	}
 }
 
-#footer {
-	background-color: #eee;
-	height: 6em;
-	margin-top: 2em;
-	padding-top: 1em;
-	position: absolute;
-	z-index: -20;
-	clear: both;
-	width: 100%;
-	text-align: center;
-}
-
-#footer-content {
-	background-color: #333;
-	bottom: 0px;
-	font-size: 2em;
-	left: 0px;
-	margin: 0 auto;
-	padding-left: 1em;
-	padding-right: 1em;
-	position: fixed;
-	right: 0px;
-	text-align: center;
-	width: 100%;
-	z-index: -15;
-	color: #eee;
-}
-
 /* code blocks */
 pre {
 	border: none;
