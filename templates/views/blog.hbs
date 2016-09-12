@@ -7,11 +7,13 @@
 				</div>
 			</div>
 			<div class="row">
+				{{#if data.headlines.0.slug}}
 				<div class="col-md-10 col-md-offset-1 content">
 					<a href="{{postUrl data.headlines.0.slug}}"><h1 class="loud">{{ data.headlines.0.title }}</h1></a>
-					<h3 class="loud sub">MichikoKatsu.com is designed to be a one-stop-shop for everything you need to start, improve, publish and market your self-published fiction book.</h3>
+					<h3 class="loud sub">{{ data.headlines.0.content.brief }}</h3>
 					<h6>by <a href="#">{{ data.headlines.0.author.name.first }}</a></h6>
 				</div>
+				{{/if}}
 			</div>
 			<div class="row">
 				{{#if data.headlines.1.slug}}
