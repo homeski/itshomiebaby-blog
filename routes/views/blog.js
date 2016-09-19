@@ -56,7 +56,7 @@ exports = module.exports = function (req, res) {
 		var r = keystone.list('Post').model.find()
 			.where('state', 'published')
 			.sort('-publishedDate')
-			.populate('author');
+			.populate('author categories');
 
 		async.parallel([
 			function(callback) {
