@@ -1,0 +1,28 @@
+Start 9:15pm
+
+Goal: Receive an e-mail when a new hockey injury is added to Rotoworld injuries page.
+
+How: 
+
+- Cron job every 5 minutes runs ./home/homeski/hockey-injuries.py
+X- Nodejs script scrapes http://www.rotoworld.com/teams/injuries/nhl/all/ for injured players
+	- Download page using wget
+		10:09pm
+X- Script creates a object out of all player information
+	- https://docs.python.org/2/library/htmlparser.html
+	- https://github.com/UncoolAJ86/node-jquery
+	 Parse page and create a dictionary player object
+		- Initially attempted to go with Python...shifted to use node.js and jquery instead.
+		- Use nodejs and cheerio module to parse html as if using jquery. Creates a list of player objects.
+X- Script loads each player into Redis database with all info
+	1:00am
+	- https://hub.docker.com/_/redis/
+	- run redis as a docker container
+	- Load Data into Redis
+	3:00am
+	2:00pm
+- If player doesn't exist or hash changes, send an e-mail with info to homeski@cox.net
+	https://wiki.centos.org/HowTos/postfix
+	X- Updated list of players now returned, need to process
+	- Setup smtp server
+Step by step:

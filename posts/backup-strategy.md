@@ -32,6 +32,6 @@ setup destination key
 4.
 
 ```
-* 23 * * * mongodump -o /tmp/dump && scp -r /tmp/dump backup@destionation:
+* * * * * /bin/bash /home/homeski/dev/backup/mongod.sh
 ```
 
