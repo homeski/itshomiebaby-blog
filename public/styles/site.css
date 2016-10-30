@@ -5821,9 +5821,6 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-body {
-  color: #777; }
-
 #site-wrapper {
   position: relative;
   background-color: #fff; }
@@ -5831,31 +5828,16 @@ body {
 .content {
   text-align: center; }
 
-#footer {
-  background-color: #eee;
-  height: 6em;
-  margin-top: 2em;
-  padding-top: 1em;
-  position: absolute;
-  z-index: -20;
-  clear: both;
-  width: 100%;
-  text-align: center; }
+#post-body {
+  border-top: 3px solid #555;
+  padding-top: 1em; }
+  #post-body h1 {
+    color: #555; }
 
-#footer-content {
-  background-color: #333;
-  bottom: 0px;
-  font-size: 2em;
-  left: 0px;
-  margin: 0 auto;
-  padding-left: 1em;
-  padding-right: 1em;
-  position: fixed;
-  right: 0px;
-  text-align: center;
-  width: 100%;
-  z-index: -15;
-  color: #eee; }
+/* code blocks */
+pre {
+  border: none;
+  background-color: #fff; }
 
 .block h3 {
   font-family: 'Lora', serif; }
@@ -5885,14 +5867,21 @@ a:hover .loud {
 .navbar-default {
   background-color: #fff;
   border-color: #fff;
+  color: #555;
   margin-top: 1em; }
+
+.navbar-default .navbar-brand {
+  color: #555; }
 
 .container-fluid {
   padding-left: 0;
   padding-right: 0; }
 
-h1, h2, h3, h4, h5, h6, p {
-  font-family: 'Lora', serif; }
+h1, h2, h3, h4, h5, h6, p, li {
+  font-family: 'Tahoma', serif; }
+
+p, li {
+  font-size: 13px; }
 
 input, button {
   border-radius: 0 !important; }

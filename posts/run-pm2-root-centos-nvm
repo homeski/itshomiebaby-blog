@@ -1,0 +1,9 @@
+# install pm2 (as regular user)
+npm install -g pm2
+
+# add nvm .bin to ROOT path
+# edit /root/.bash_profile
+PATH=$PATH:$HOME/bin:/home/homeski/.nvm/versions/node/v6.2.2/bin/
+
+# start pm2 as root
+sudo -i sh -c "cd /home/homeski/dev/keystone-helloworld; pm2 delete keystone.js"
