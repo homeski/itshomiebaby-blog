@@ -1,9 +1,51 @@
-# install pm2 (as regular user)
-npm install -g pm2
+# Running pm2 + nvm as root on CentOS
 
-# add nvm .bin to ROOT path
+Running [pm2](http://pm2.keymetrics.io/) with root privileges while using [nvm] on CentOS 7.
+
+Why? 
+
+To get pm2 to bind to port 80 for a production web server.
+
+nvm is meant to be ran with your [local user environment](http://stackoverflow.com/questions/21215059/cant-use-nvm-from-root-or-sudo), not as the root user. [pm2 needs root priviliges](http://pm2.keymetrics.io/docs/usage/specifics/) to bind to any port less than 1024.
+
+But pm2 was installed using the [npm](https://www.npmjs.com/) provided by nvm! The workaround provided by the official pm2 wiki recommends installing the authbind package, which unfortunately is not provided by the CentOS package repositories. 
+
+Expanding on the [tip provided by the nvm team](https://github.com/creationix/nvm/issues/5) on running the nvm provided [node](https://nodejs.org/en/) binaries as root; manually loading the binaries provided by nvm into root's `PATH`, let us use `sudo` to run pm2 and bind to privileged ports.
+
+This is a hackish solution and will require manually updating the PATH when changing node versions. Ideally, this is only needed on production servers, and shouldn't be used in an extremely fluid environment. 
+
+```
+# install pm2 
+$ npm install -g pm2
+
+# find the path to node
+$ which node
+/home/myuser/.nvm/versions/node/v6.2.2/bin/node
+
+# switch to root
+$ sudo su -
+
+# add nvm bin to PATH
 # edit /root/.bash_profile
-PATH=$PATH:$HOME/bin:/home/homeski/.nvm/versions/node/v6.2.2/bin/
+[root] vim /root/bin/.bash_profile
+# append to PATH ... e.g. PATH=$PATH:$HOME/bin:/home/myuser/.nvm/versions/node/v6.2.2/bin/
+
+# switch back to the user
+[root] exit
+logout
 
 # start pm2 as root
-sudo -i sh -c "cd /home/homeski/dev/keystone-helloworld; pm2 delete keystone.js"
+sudo -i sh -c "cd /home/myuser/myapp; pm2 start myapp.js"
+
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────┬────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ cpu │ mem        │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────┼────────────┼──────────┤
+│ keystone │ 0  │ fork │ 22866 │ online │ 0       │ 2D     │ 0%  │ 128.6 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────┴────────────┴──────────┘
+ Use `pm2 show <id|name>` to get more details about an app
+```
+
+Key things to note:
+
+- Passing the -i flag to sudo is necessary. This will cause the sudo command to load the .bash_profile file and source it.
+- Using cd to change to the correct directory prior to running pm2 is also necessary. Otherwise node_modules will not load properly. 
