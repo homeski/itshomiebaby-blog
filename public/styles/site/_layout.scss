@@ -22,6 +22,12 @@
 }
 
 /* code blocks */
+code {
+	background-color: inherit;
+	color: #1d1b30;
+	font-weight: bold;
+}
+
 pre {
 	border: none;
 	background-color: #fff;
@@ -44,12 +50,11 @@ pre {
 	padding-right: .5em;
 }
 
-a .loud {
-	color: #555;
-}
-
-a:hover .loud {
-	color: #333;
+a
+{
+	.loud {
+		color: #555;
+	}
 }
 
 /* overwrite bootstrap colors */
